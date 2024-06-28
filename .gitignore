@@ -1,4 +1,3 @@
-# from ts2vec
 /datasets/*[!.py]
 .ipynb_checkpoints
 __pycache__
