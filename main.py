@@ -7,7 +7,7 @@ import datetime
 
 import tasks
 from tibot import TiBot
-from utils import init_dl_program, save_checkpoint_callback, pkl_save, name_with_datetime
+from utils import init_dl_program, pkl_save, name_with_datetime
 import datautils
 
 if __name__ == '__main__':
@@ -19,8 +19,6 @@ if __name__ == '__main__':
     parser.add_argument('--batch-size', type=int, default=8, help='The batch size (defaults to 8)')
     parser.add_argument('--lr', type=float, default=0.001, help='The learning rate (defaults to 0.001)')
     parser.add_argument('--repr-dims', type=int, default=320, help='The representation dimension (defaults to 320)')
-    parser.add_argument('--max-train-length', type=int, default=3000, help='For sequence with a length greater than <max_train_length>, it would be cropped into some sequences, each of which has a length less than <max_train_length> (defaults to 3000)')
-    parser.add_argument('--iters', type=int, default=None, help='The number of iterations')
     parser.add_argument('--epochs', type=int, default=40, help='The number of epochs')
     parser.add_argument('--save-every', type=int, default=None, help='Save the checkpoint every <save_every> iterations/epochs')
     parser.add_argument('--seed', type=int, default=None, help='The random seed')
@@ -82,18 +80,32 @@ if __name__ == '__main__':
         batch_size=args.batch_size,
         lr=args.lr,
         output_dims=args.repr_dims,
-        max_train_length=args.max_train_length
     )
     
+    # TODO: 统一训练的单位
+    def save_checkpoint_callback(
+        save_every=1,
+        unit='epoch'
+    ):
+        assert unit in ('epoch', 'iter')
+        def callback(model, loss):
+            n = model.n_epochs if unit == 'epoch' else model.n_iters
+            if n % save_every == 0:
+                model.save(f'{run_dir}/model_{n}.pkl')
+        return callback
+    
+    # decide whether to save the model every epoch/iteration
     if args.save_every is not None:
         unit = 'epoch' if args.epochs is not None else 'iter'
         config[f'after_{unit}_callback'] = save_checkpoint_callback(args.save_every, unit)
-
+    
+    # create a directory to save the model and output
     run_dir = 'training/' + args.dataset + '__' + name_with_datetime(args.run_name)
     os.makedirs(run_dir, exist_ok=True)
     
     t = time.time()
     
+    # TODO: Modify TiBot as the entry point for training
     model = TiBot(
         input_dims=train_data.shape[-1],
         device=device,
@@ -102,14 +114,15 @@ if __name__ == '__main__':
     loss_log = model.fit(
         train_data,
         n_epochs=args.epochs,
-        n_iters=args.iters,
+        # n_iters=args.iters, 考虑是否要删除这个参数
         verbose=True
     )
     model.save(f'{run_dir}/model.pkl')
 
     t = time.time() - t
     print(f"\nTraining time: {datetime.timedelta(seconds=t)}\n")
-
+    
+    # evaluation part
     if args.eval:
         if task_type == 'classification':
             out, eval_res = tasks.eval_classification(model, train_data, train_labels, test_data, test_labels, eval_protocol='svm')
