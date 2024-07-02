@@ -2,24 +2,13 @@ import torch
 import numpy as np
 import argparse
 import os
-import sys
 import time
 import datetime
-from ts2vec import TS2Vec
-import tasks
-import datautils
-from utils import init_dl_program, name_with_datetime, pkl_save, data_dropout
 
-def save_checkpoint_callback(
-    save_every=1,
-    unit='epoch'
-):
-    assert unit in ('epoch', 'iter')
-    def callback(model, loss):
-        n = model.n_epochs if unit == 'epoch' else model.n_iters
-        if n % save_every == 0:
-            model.save(f'{run_dir}/model_{n}.pkl')
-    return callback
+import tasks
+from tibot import TiBot
+from utils import init_dl_program, save_checkpoint_callback, pkl_save, name_with_datetime
+import datautils
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -37,13 +26,13 @@ if __name__ == '__main__':
     parser.add_argument('--seed', type=int, default=None, help='The random seed')
     parser.add_argument('--max-threads', type=int, default=None, help='The maximum allowed number of threads used by this process')
     parser.add_argument('--eval', action="store_true", help='Whether to perform evaluation after training')
-    parser.add_argument('--irregular', type=float, default=0, help='The ratio of missing observations (defaults to 0)')
     args = parser.parse_args()
     
     print("Dataset:", args.dataset)
     print("Arguments:", str(args))
     
     device = init_dl_program(args.gpu, seed=args.seed, max_threads=args.max_threads)
+    print(device)
     
     print('Loading data... ', end='')
     if args.loader == 'UCR':
@@ -87,13 +76,6 @@ if __name__ == '__main__':
     else:
         raise ValueError(f"Unknown loader {args.loader}.")
         
-        
-    if args.irregular > 0:
-        if task_type == 'classification':
-            train_data = data_dropout(train_data, args.irregular)
-            test_data = data_dropout(test_data, args.irregular)
-        else:
-            raise ValueError(f"Task type {task_type} is not supported when irregular>0.")
     print('done')
     
     config = dict(
@@ -112,7 +94,7 @@ if __name__ == '__main__':
     
     t = time.time()
     
-    model = TS2Vec(
+    model = TiBot(
         input_dims=train_data.shape[-1],
         device=device,
         **config
