@@ -28,11 +28,16 @@ class TBotLoss(nn.Module):
 
         # contrastive loss for student1_patch and teacher1_patch
         # sum over dimension 1
-        # loss_patch_1 = torch.sum(-teacher1_patch * F.log_softmax(student1_patch, dim=2), dim=-1)
-        # contrastive loss for student2_patch and teacher2_patch
-        # loss_patch_2 = torch.sum(-teacher2_patch * F.log_softmax(student2_patch, dim=2), dim=-1)
-        # loss_patch = (loss_patch_1 + loss_patch_2) / 2
-        loss_patch = 0
+        loss_patch_1 = torch.sum(-teacher1_patch * F.log_softmax(student1_patch, dim=1), dim=-1)
+        loss_patch_1 = torch.sum(loss_patch_1, dim=1)
+        # loss_patch_1 = torch.sum(loss_patch_1 * student_mask1, dim=1)
+        # loss_patch_1 = torch.sum(loss_patch_1) / torch.sum(student_mask1)
+
+        loss_patch_2 = torch.sum(-teacher2_patch * F.log_softmax(student2_patch, dim=1), dim=-1)
+        loss_patch_2 = torch.sum(loss_patch_2, dim=1)
+        # loss_patch_2 = torch.sum(loss_patch_2 * student_mask2, dim=1)
+        # loss_patch_2 = torch.sum(loss_patch_2) / torch.sum(student_mask2)
+        loss_patch = (loss_patch_1 + loss_patch_2) / 2
             
         loss = loss_cls + loss_patch
 
