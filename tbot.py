@@ -17,12 +17,12 @@ class TBot(nn.Module):
     def __init__(
         self,
         input_dims,
-        output_dims=320,
-        hidden_dims=64,
-        depth=10,
+        output_dims=64,
+        hidden_dims=32,
+        depth=5,
         device='cuda',
         lr=0.001,
-        batch_size=8,
+        batch_size=32,
         temporal_unit=0, # control the minimum length of the time series
         after_epoch_callback=None,
     ):
@@ -36,8 +36,8 @@ class TBot(nn.Module):
         self._student_net = TSEncoder(input_dims=input_dims, output_dims=output_dims, hidden_dims=hidden_dims, depth=depth).to(self.device)
 
         # shared cls and patch headers for teacher and student
-        self.teacher_head = TBotHead(output_dims, cls_dims=320, patch_dims=320, device=self.device).to(self.device)
-        self.student_head = TBotHead(output_dims, cls_dims=320, patch_dims=320, device=self.device).to(self.device)
+        self.teacher_head = TBotHead(output_dims, cls_dims=32, patch_dims=32, device=self.device).to(self.device)
+        self.student_head = TBotHead(output_dims, cls_dims=32, patch_dims=32, device=self.device).to(self.device)
 
         # combine the encoder and the header
         self.teacher = nn.Sequential(self._teacher_net, self.teacher_head).to(self.device)

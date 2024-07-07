@@ -107,7 +107,6 @@ if __name__ == '__main__':
     
     # t = time.time()
     
-    # TODO: Modify TiBot as the entry point for training
     model = TBot(
         input_dims=train_data.shape[-1],
         device=device,

@@ -32,10 +32,6 @@ class TSEncoder(nn.Module):
         self.mask_mode = mask_mode
         self.input_fc = nn.Linear(input_dims, hidden_dims)
 
-        # 以下是一组卷积层，用于提取时间序列特征
-        # 输入维度是 hidden_dims，输出维度是 output_dims
-        # 一共有 depth 层卷积层，每层卷积层的输出维度都是 hidden_dims
-        # 卷积核大小是 3
         self.feature_extractor = DilatedConvEncoder(
             hidden_dims,
             [hidden_dims] * depth + [output_dims],
