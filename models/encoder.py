@@ -41,20 +41,13 @@ class TSEncoder(nn.Module):
             [hidden_dims] * depth + [output_dims],
             kernel_size=3
         )
-        self.repr_dropout = nn.Dropout(p=0.1)
-        
-    def forward(self, x, mask=None):  # x: B x T x input_dims
-        nan_mask = ~x.isnan().any(axis=-1)
-
-        x[~nan_mask] = 0
-        x = self.input_fc(x)  # B x T x Ch
-        
-        # generate & apply mask
-        if mask is None:
-            if self.training:
-                mask = self.mask_mode
-            else:
-                mask = 'all_true'
+        self.repr_dropout = nn.Dropout(p=0.3)
+    
+    def mask(self, x):
+        if self.training:
+            mask = self.mask_mode
+        else:
+            mask = 'all_true'
         
         if mask == 'binomial':
             mask = generate_binomial_mask(x.size(0), x.size(1)).to(x.device)
@@ -68,10 +61,16 @@ class TSEncoder(nn.Module):
             mask = x.new_full((x.size(0), x.size(1)), True, dtype=torch.bool)
             mask[:, -1] = False
         
-        mask &= nan_mask
-        # x[~mask] = 0
+        # mask &= nan_mask
+        x[mask] = 0
+
+        return x, mask
         
-        # conv encoder
+    def forward(self, x):  # x: B x T x input_dims
+        # nan_mask = ~x.isnan().any(axis=-1)
+        # x[~nan_mask] = 0
+        x = self.input_fc(x)  # B x T x Ch
+        
         x = x.transpose(1, 2)  # B x Ch x T
         x = self.repr_dropout(self.feature_extractor(x))  # B x Co x T
         x = x.transpose(1, 2)  # B x T x Co

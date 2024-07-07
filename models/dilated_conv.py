@@ -40,6 +40,7 @@ class ConvBlock(nn.Module):
 class DilatedConvEncoder(nn.Module):
     def __init__(self, in_channels, channels, kernel_size):
         super().__init__()
+        self.counter = 0
         self.net = nn.Sequential(*[
             ConvBlock(
                 channels[i-1] if i > 0 else in_channels,
