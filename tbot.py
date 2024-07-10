@@ -17,12 +17,14 @@ class TBot(nn.Module):
     def __init__(
         self,
         input_dims,
-        output_dims=64,
-        hidden_dims=32,
+        output_dims=320,
+        hidden_dims=64,
         depth=5,
         device='cuda',
         lr=0.001,
-        batch_size=32,
+        batch_size=16,
+        teacher_temp=5,
+        student_temp=2,
         temporal_unit=0, # control the minimum length of the time series
         after_epoch_callback=None,
     ):
@@ -43,7 +45,7 @@ class TBot(nn.Module):
         self.teacher = nn.Sequential(self._teacher_net, self.teacher_head).to(self.device)
         self.student = nn.Sequential(self._student_net, self.student_head).to(self.device)
 
-        self.tbotloss = TBotLoss()
+        self.tbotloss = TBotLoss(student_temp=student_temp, teacher_temp=teacher_temp)
 
         self.after_epoch_callback = after_epoch_callback
         self.n_epochs = 0
@@ -77,9 +79,7 @@ class TBot(nn.Module):
         train_loader = DataLoader(train_dataset, batch_size=min(self.batch_size, len(train_dataset)), shuffle=True, drop_last=True)
         
         for _ in range(n_epochs):
-
             for i, (batch,) in enumerate(train_loader):
-
                 # self.teacher_net detach
                 for param in self.teacher.parameters():
                     param.requires_grad = False

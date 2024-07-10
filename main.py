@@ -19,6 +19,9 @@ if __name__ == '__main__':
     parser.add_argument('--batch-size', type=int, default=8, help='The batch size (defaults to 8)')
     parser.add_argument('--lr', type=float, default=0.001, help='The learning rate (defaults to 0.001)')
     parser.add_argument('--repr-dims', type=int, default=320, help='The representation dimension (defaults to 320)')
+    parser.add_argument('--t-temp', type=float, default=5, help='The teacher temperature (defaults to 5)')
+    parser.add_argument('--s-temp', type=float, default=2, help='The student temperature (defaults to 2)')
+
     parser.add_argument('--epochs', type=int, help='The number of epochs')
     parser.add_argument('--iters', type=int, help='The number of iterations')
     parser.add_argument('--save-every', type=int, default=None, help='Save the checkpoint every <save_every> iterations/epochs')
@@ -82,6 +85,8 @@ if __name__ == '__main__':
         batch_size=args.batch_size,
         lr=args.lr,
         output_dims=args.repr_dims,
+        teacher_temp=args.t_temp,
+        student_temp=args.s_temp,
     )
     
     def save_checkpoint_callback(
@@ -141,54 +146,54 @@ if __name__ == '__main__':
 
     print("Finished.")
 
-# add a running example
+# Example command:
 # python -u main.py Chinatown UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
 # Dataset: Chinatown
-# Arguments: Namespace(batch_size=8, dataset='Chinatown', epochs=None, eval=True, gpu=0, iters=None, loader='UCR', lr=0.001, max_threads=8, repr_dims=320, run_name='UCR', save_every=None, seed=42)
+# Arguments: Namespace(batch_size=8, dataset='Chinatown', epochs=None, eval=True, gpu=0, iters=None, loader='UCR', lr=0.001, max_threads=8, repr_dims=320, run_name='UCR', s_temp=2, save_every=None, seed=42, t_temp=5)
 # cuda:0
 # Loading data... done
-# Epoch 1 loss: -2.8164639472961426
-# Epoch 2 loss: -13.905488967895508
-# Epoch 3 loss: -3.057619094848633
-# Epoch 4 loss: -0.79825758934021
-# Epoch 5 loss: -2.1611990928649902
-# Epoch 6 loss: -2.8378591537475586
-# Epoch 7 loss: -1.0815879106521606
-# Epoch 8 loss: 5.286574363708496
-# Epoch 9 loss: -10.371329307556152
-# Epoch 10 loss: -2.6371264457702637
-# Epoch 11 loss: 0.42556095123291016
-# Epoch 12 loss: 6.107945919036865
-# Epoch 13 loss: 2.7525644302368164
-# Epoch 14 loss: 0.37131616473197937
-# Epoch 15 loss: 7.795841217041016
-# Epoch 16 loss: 7.1385650634765625
-# Epoch 17 loss: 3.1102495193481445
-# Epoch 18 loss: -2.874086856842041
-# Epoch 19 loss: 4.188469886779785
-# Epoch 20 loss: -0.6280419230461121
-# Epoch 21 loss: 2.021824836730957
-# Epoch 22 loss: -4.434417724609375
-# Epoch 23 loss: -7.869085311889648
-# Epoch 24 loss: 0.6798977851867676
-# Epoch 25 loss: 2.5356507301330566
-# Epoch 26 loss: -4.297179222106934
-# Epoch 27 loss: 7.297275543212891
-# Epoch 28 loss: -4.855055809020996
-# Epoch 29 loss: -3.974665641784668
-# Epoch 30 loss: -8.916358947753906
-# Epoch 31 loss: 5.701718330383301
-# Epoch 32 loss: -1.6803921461105347
-# Epoch 33 loss: -5.390422344207764
-# Epoch 34 loss: -2.591742992401123
-# Epoch 35 loss: 2.2067902088165283
-# Epoch 36 loss: 2.5787227153778076
-# Epoch 37 loss: -0.18691407144069672
-# Epoch 38 loss: -0.5377658009529114
-# Epoch 39 loss: -0.7613030672073364
-# Epoch 40 loss: -4.717661380767822
+# Epoch 1 loss: 0.2930034399032593
+# Epoch 2 loss: -0.25440114736557007
+# Epoch 3 loss: 4.086831569671631
+# Epoch 4 loss: 1.028947353363037
+# Epoch 5 loss: 3.284266471862793
+# Epoch 6 loss: -2.250728130340576
+# Epoch 7 loss: -2.2256038188934326
+# Epoch 8 loss: -4.159049034118652
+# Epoch 9 loss: 3.347928524017334
+# Epoch 10 loss: 0.5131765604019165
+# Epoch 11 loss: -2.178114652633667
+# Epoch 12 loss: 0.5817365646362305
+# Epoch 13 loss: 1.9178519248962402
+# Epoch 14 loss: 0.7439870834350586
+# Epoch 15 loss: -0.0094408318400383
+# Epoch 16 loss: 6.794332504272461
+# Epoch 17 loss: -0.68076491355896
+# Epoch 18 loss: 2.53469181060791
+# Epoch 19 loss: -1.638542652130127
+# Epoch 20 loss: 1.385166049003601
+# Epoch 21 loss: 0.028024137020111084
+# Epoch 22 loss: 1.3539611101150513
+# Epoch 23 loss: -2.062892436981201
+# Epoch 24 loss: 1.0025149583816528
+# Epoch 25 loss: 2.072673797607422
+# Epoch 26 loss: -2.570943832397461
+# Epoch 27 loss: 2.7207698822021484
+# Epoch 28 loss: 6.780943393707275
+# Epoch 29 loss: 0.5430023670196533
+# Epoch 30 loss: -1.7411929368972778
+# Epoch 31 loss: 2.5804855823516846
+# Epoch 32 loss: -1.7874424457550049
+# Epoch 33 loss: 1.829345941543579
+# Epoch 34 loss: 2.987247943878174
+# Epoch 35 loss: -0.3072805404663086
+# Epoch 36 loss: -0.1635923683643341
+# Epoch 37 loss: -1.4080185890197754
+# Epoch 38 loss: 0.7717499732971191
+# Epoch 39 loss: 1.0758179426193237
+# Epoch 40 loss: 5.509942054748535
 
-# Training time: 0:00:12.087501
+# Training time: 0:00:13.372400
 
-# Evaluation result: {'acc': 0.7405247813411079, 'auprc': 0.9009963745487906}
+# Evaluation result: {'acc': 0.6676384839650146, 'auprc': 0.9240271167453953, 'auroc': 0.8294454413398273, 'f1': 0.657504729871768}
 # Finished.

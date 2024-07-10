@@ -6,16 +6,15 @@ import torch.nn.functional as F
 import numpy as np
 
 class TBotLoss(nn.Module):
-    def __init__(self):
+    def __init__(self, student_temp=2, teacher_temp=5):
         super().__init__()
-        self.student_temp = 2.0
-        self.teacher_temp = 3.0
+        self.student_temp = student_temp
+        self.teacher_temp = teacher_temp
 
     def cross_entropy(self, student, teacher):
         student = student / self.student_temp
         teacher = teacher / self.teacher_temp
         return torch.sum(-teacher * F.log_softmax(student, dim=1), dim=-1)
-        
 
     def forward(self, student_out1, teacher_out1, 
                     student_out2, teacher_out2, 

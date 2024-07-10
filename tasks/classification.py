@@ -4,7 +4,7 @@ from sklearn.preprocessing import label_binarize
 from sklearn.metrics import average_precision_score
 from sklearn.metrics import roc_auc_score, f1_score
 
-def eval_classification(model, train_data, train_labels, test_data, test_labels, eval_protocol='linear'):
+def eval_classification(model, train_data, train_labels, test_data, test_labels, eval_protocol='svm'):
     assert train_labels.ndim == 1 or train_labels.ndim == 2
     train_repr = model.encode(train_data)
     test_repr = model.encode(test_data)
@@ -36,5 +36,7 @@ def eval_classification(model, train_data, train_labels, test_data, test_labels,
         y_score = clf.decision_function(test_repr)
     test_labels_onehot = label_binarize(test_labels, classes=np.arange(train_labels.max()+1))
     auprc = average_precision_score(test_labels_onehot, y_score)
+    auroc = roc_auc_score(test_labels_onehot, y_score)
+    f1 = f1_score(test_labels, clf.predict(test_repr), average='macro')
     
-    return y_score, { 'acc': acc, 'auprc': auprc }
+    return y_score, { 'acc': acc, 'auprc': auprc , 'auroc': auroc , 'f1': f1}
