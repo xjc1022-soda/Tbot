@@ -6,8 +6,8 @@ from sklearn.metrics import roc_auc_score, f1_score
 
 def eval_classification(model, train_data, train_labels, test_data, test_labels, eval_protocol='linear'):
     assert train_labels.ndim == 1 or train_labels.ndim == 2
-    train_repr = model.encode(train_data, encoding_window='full_series' if train_labels.ndim == 1 else None)
-    test_repr = model.encode(test_data, encoding_window='full_series' if train_labels.ndim == 1 else None)
+    train_repr = model.encode(train_data)
+    test_repr = model.encode(test_data)
 
     if eval_protocol == 'linear':
         fit_clf = eval_protocols.fit_lr

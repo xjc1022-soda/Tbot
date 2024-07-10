@@ -70,7 +70,7 @@ class TBot(nn.Module):
         assert train_data.ndim == 3
 
         if n_epochs is None:
-            n_epochs = 5
+            n_epochs = 40
         loss_log = []
 
         train_dataset = TensorDataset(torch.from_numpy(train_data).to(torch.float))
@@ -151,6 +151,11 @@ class TBot(nn.Module):
             self.n_epochs += 1
 
         return loss
+    
+    def encode(self, x):
+        x = torch.from_numpy(x).to(torch.float).to(self.device)
+        x_cls, x_patch = self.student(x)
+        return x_cls.to('cpu').detach().numpy()
     
     def save(self, path):
         torch.save(self.state_dict(), path)
