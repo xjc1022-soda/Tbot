@@ -70,19 +70,15 @@ class TBot(nn.Module):
         assert train_data.ndim == 3
 
         if n_epochs is None:
-            n_epochs = 1
-        n_epochs = 1
+            n_epochs = 10
         loss_log = []
 
         train_dataset = TensorDataset(torch.from_numpy(train_data).to(torch.float))
         train_loader = DataLoader(train_dataset, batch_size=min(self.batch_size, len(train_dataset)), shuffle=True, drop_last=True)
         
         for _ in range(n_epochs):
-            n_epochs = 1
 
             for i, (batch,) in enumerate(train_loader):
-                if n_epochs > 1:
-                    break
 
                 # self.teacher_net detach
                 for param in self.teacher.parameters():
@@ -150,7 +146,6 @@ class TBot(nn.Module):
                 loss.mean().backward()
                 self.optimizer.step()
                 self.ema_update()
-                n_epochs += 1
 
             print(f'Epoch {self.n_epochs+1} loss: {loss.mean().item()}')
             self.n_epochs += 1

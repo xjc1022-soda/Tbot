@@ -20,8 +20,11 @@ def generate_continuous_mask(B, T, n=5, l=0.1):
             res[i, t:t+l] = False
     return res
 
+# def generate_binomial_mask(B, T, p=0.5):
+#     return torch.from_numpy(np.random.binomial(1, p, size=(B, T))).to(torch.bool)
 def generate_binomial_mask(B, T, p=0.5):
-    return torch.from_numpy(np.random.binomial(1, p, size=(B, T))).to(torch.bool)
+    return torch.from_numpy(np.random.binomial(1, p, size=(1, T))).repeat(B, 1).to(torch.bool)
+
 
 class TSEncoder(nn.Module):
     def __init__(self, input_dims, output_dims, hidden_dims=64, depth=10, mask_mode='binomial'):
