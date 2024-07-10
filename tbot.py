@@ -55,7 +55,7 @@ class TBot(nn.Module):
             for param_s, param_t in zip(self.student.parameters(), self.teacher.parameters()):
                 param_t.data = alpha * param_t.data + (1 - alpha) * param_s.data
 
-    def fit(self, train_data, n_epochs=None, verbose=False):
+    def fit(self, train_data, n_epochs=None, n_iters=None, verbose=False):
         ''' Training the TiBot model.
         
         Args:
@@ -70,7 +70,7 @@ class TBot(nn.Module):
         assert train_data.ndim == 3
 
         if n_epochs is None:
-            n_epochs = 10
+            n_epochs = 5
         loss_log = []
 
         train_dataset = TensorDataset(torch.from_numpy(train_data).to(torch.float))
@@ -151,3 +151,6 @@ class TBot(nn.Module):
             self.n_epochs += 1
 
         return loss
+    
+    def save(self, path):
+        torch.save(self.state_dict(), path)

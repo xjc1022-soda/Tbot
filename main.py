@@ -20,6 +20,7 @@ if __name__ == '__main__':
     parser.add_argument('--lr', type=float, default=0.001, help='The learning rate (defaults to 0.001)')
     parser.add_argument('--repr-dims', type=int, default=320, help='The representation dimension (defaults to 320)')
     parser.add_argument('--epochs', type=int, help='The number of epochs')
+    parser.add_argument('--iters', type=int, help='The number of iterations')
     parser.add_argument('--save-every', type=int, default=None, help='Save the checkpoint every <save_every> iterations/epochs')
     parser.add_argument('--seed', type=int, default=None, help='The random seed')
     parser.add_argument('--max-threads', type=int, default=None, help='The maximum allowed number of threads used by this process')
@@ -83,29 +84,27 @@ if __name__ == '__main__':
         output_dims=args.repr_dims,
     )
     
-    # TODO: 等待模型的实现再进行save checkpoint的实现
-    # # TODO: 统一训练的单位
-    # def save_checkpoint_callback(
-    #     save_every=1,
-    #     unit='epoch'
-    # ):
-    #     assert unit in ('epoch', 'iter')
-    #     def callback(model, loss):
-    #         n = model.n_epochs if unit == 'epoch' else model.n_iters
-    #         if n % save_every == 0:
-    #             model.save(f'{run_dir}/model_{n}.pkl')
-    #     return callback
+    def save_checkpoint_callback(
+        save_every=1,
+        unit='epoch'
+    ):
+        assert unit in ('epoch', 'iter')
+        def callback(model, loss):
+            n = model.n_epochs if unit == 'epoch' else model.n_iters
+            if n % save_every == 0:
+                model.save(f'{run_dir}/model_{n}.pkl')
+        return callback
     
-    # # decide whether to save the model every epoch/iteration
-    # if args.save_every is not None:
-    #     unit = 'epoch' if args.epochs is not None else 'iter'
-    #     config[f'after_{unit}_callback'] = save_checkpoint_callback(args.save_every, unit)
+    # decide whether to save the model every epoch/iteration
+    if args.save_every is not None:
+        unit = 'epoch' if args.epochs is not None else 'iter'
+        config[f'after_{unit}_callback'] = save_checkpoint_callback(args.save_every, unit)
     
-    # # create a directory to save the model and output
-    # run_dir = 'training/' + args.dataset + '__' + name_with_datetime(args.run_name)
-    # os.makedirs(run_dir, exist_ok=True)
+    # create a directory to save the model and output
+    run_dir = 'training/' + args.dataset + '__' + name_with_datetime(args.run_name)
+    os.makedirs(run_dir, exist_ok=True)
     
-    # t = time.time()
+    t = time.time()
     
     model = TBot(
         input_dims=train_data.shape[-1],
@@ -115,14 +114,14 @@ if __name__ == '__main__':
     loss = model.fit(
         train_data,
         n_epochs=args.epochs,
-        # TODO: n_iters=args.iters, 考虑是否要删除这个参数
+        n_iters=args.iters,
         verbose=True
     )
     
-    # model.save(f'{run_dir}/model.pkl')
+    model.save(f'{run_dir}/model.pkl')
 
-    # t = time.time() - t
-    # print(f"\nTraining time: {datetime.timedelta(seconds=t)}\n")
+    t = time.time() - t
+    print(f"\nTraining time: {datetime.timedelta(seconds=t)}\n")
     
     # evaluation part
     if args.eval:
@@ -136,8 +135,8 @@ if __name__ == '__main__':
             out, eval_res = tasks.eval_anomaly_detection_coldstart(model, all_train_data, all_train_labels, all_train_timestamps, all_test_data, all_test_labels, all_test_timestamps, delay)
         else:
             assert False
-        # pkl_save(f'{run_dir}/out.pkl', out)
-        # pkl_save(f'{run_dir}/eval_res.pkl', eval_res)
-        # print('Evaluation result:', eval_res)
+        pkl_save(f'{run_dir}/out.pkl', out)
+        pkl_save(f'{run_dir}/eval_res.pkl', eval_res)
+        print('Evaluation result:', eval_res)
 
     print("Finished.")
