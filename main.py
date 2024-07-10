@@ -16,7 +16,7 @@ if __name__ == '__main__':
     parser.add_argument('run_name', help='The folder name used to save model, output and evaluation metrics. This can be set to any word')
     parser.add_argument('--loader', type=str, required=True, help='The data loader used to load the experimental data. This can be set to UCR, UEA, forecast_csv, forecast_csv_univar, anomaly, or anomaly_coldstart')
     parser.add_argument('--gpu', type=int, default=0, help='The gpu no. used for training and inference (defaults to 0)')
-    parser.add_argument('--batch-size', type=int, default=16, help='The batch size (defaults to 8)')
+    parser.add_argument('--batch-size', type=int, default=8, help='The batch size (defaults to 8)')
     parser.add_argument('--lr', type=float, default=0.001, help='The learning rate (defaults to 0.001)')
     parser.add_argument('--repr-dims', type=int, default=320, help='The representation dimension (defaults to 320)')
     parser.add_argument('--epochs', type=int, help='The number of epochs')
@@ -140,3 +140,55 @@ if __name__ == '__main__':
         print('Evaluation result:', eval_res)
 
     print("Finished.")
+
+# add a running example
+# python -u main.py Chinatown UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+# Dataset: Chinatown
+# Arguments: Namespace(batch_size=8, dataset='Chinatown', epochs=None, eval=True, gpu=0, iters=None, loader='UCR', lr=0.001, max_threads=8, repr_dims=320, run_name='UCR', save_every=None, seed=42)
+# cuda:0
+# Loading data... done
+# Epoch 1 loss: -2.8164639472961426
+# Epoch 2 loss: -13.905488967895508
+# Epoch 3 loss: -3.057619094848633
+# Epoch 4 loss: -0.79825758934021
+# Epoch 5 loss: -2.1611990928649902
+# Epoch 6 loss: -2.8378591537475586
+# Epoch 7 loss: -1.0815879106521606
+# Epoch 8 loss: 5.286574363708496
+# Epoch 9 loss: -10.371329307556152
+# Epoch 10 loss: -2.6371264457702637
+# Epoch 11 loss: 0.42556095123291016
+# Epoch 12 loss: 6.107945919036865
+# Epoch 13 loss: 2.7525644302368164
+# Epoch 14 loss: 0.37131616473197937
+# Epoch 15 loss: 7.795841217041016
+# Epoch 16 loss: 7.1385650634765625
+# Epoch 17 loss: 3.1102495193481445
+# Epoch 18 loss: -2.874086856842041
+# Epoch 19 loss: 4.188469886779785
+# Epoch 20 loss: -0.6280419230461121
+# Epoch 21 loss: 2.021824836730957
+# Epoch 22 loss: -4.434417724609375
+# Epoch 23 loss: -7.869085311889648
+# Epoch 24 loss: 0.6798977851867676
+# Epoch 25 loss: 2.5356507301330566
+# Epoch 26 loss: -4.297179222106934
+# Epoch 27 loss: 7.297275543212891
+# Epoch 28 loss: -4.855055809020996
+# Epoch 29 loss: -3.974665641784668
+# Epoch 30 loss: -8.916358947753906
+# Epoch 31 loss: 5.701718330383301
+# Epoch 32 loss: -1.6803921461105347
+# Epoch 33 loss: -5.390422344207764
+# Epoch 34 loss: -2.591742992401123
+# Epoch 35 loss: 2.2067902088165283
+# Epoch 36 loss: 2.5787227153778076
+# Epoch 37 loss: -0.18691407144069672
+# Epoch 38 loss: -0.5377658009529114
+# Epoch 39 loss: -0.7613030672073364
+# Epoch 40 loss: -4.717661380767822
+
+# Training time: 0:00:12.087501
+
+# Evaluation result: {'acc': 0.7405247813411079, 'auprc': 0.9009963745487906}
+# Finished.
