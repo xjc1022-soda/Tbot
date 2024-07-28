@@ -12,7 +12,7 @@ class TBotHead(nn.Module):
 
     def forward(self, x):
         # common first two layers for cls and patch
-        mlp = nn.Sequential(
+        head = nn.Sequential(
             nn.Linear(self.output_dims, self.bottleneck_dims),
             nn.ReLU(),
             nn.Linear(self.bottleneck_dims, self.bottleneck_dims),
@@ -20,10 +20,18 @@ class TBotHead(nn.Module):
             nn.Linear(self.bottleneck_dims, self.output_dims),
         ).to(self.device)
 
-        x_cls = mlp(x[:,0,:])
+        # patch_head = nn.Sequential(
+        #     nn.Linear(self.output_dims, self.bottleneck_dims),
+        #     nn.ReLU(),
+        #     nn.Linear(self.bottleneck_dims, self.bottleneck_dims),
+        #     nn.ReLU(),
+        #     nn.Linear(self.bottleneck_dims, self.output_dims),
+        # ).to(self.device)
+
+        x_cls = head(x[:,0,:])
         x_patch = []
         for i in range(1, x.size(1)):
-            x_patch.append(mlp(x[:,i,:]))
+            x_patch.append(head(x[:,i,:]))
         x_patch = torch.stack(x_patch, dim=1)
 
         return x_cls, x_patch

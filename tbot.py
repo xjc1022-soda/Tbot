@@ -44,6 +44,10 @@ class TBot(nn.Module):
         # combine the encoder and the header
         self.teacher = nn.Sequential(self._teacher_net, self.teacher_head).to(self.device)
         self.student = nn.Sequential(self._student_net, self.student_head).to(self.device)
+        
+        # Initialize cls_center and patch_center as 0
+        self.cls_center = nn.Parameter(torch.zeros(32), requires_grad=False).to(self.device)
+        self.patch_center = nn.Parameter(torch.zeros(32), requires_grad=False).to(self.device)
 
         self.tbotloss = TBotLoss(student_temp=student_temp, teacher_temp=teacher_temp)
 
@@ -139,14 +143,14 @@ class TBot(nn.Module):
                 assert student_out1[1].size() == teacher_out1[1].size() == student_out2[1].size() == teacher_out2[1].size()
                 assert mask1.size() == mask2.size()
 
-                loss = self.tbotloss(student_out1, teacher_out1, 
+                loss, self.cls_center, self.patch_center = self.tbotloss(student_out1, teacher_out1, 
                                     student_out2, teacher_out2,
-                                    mask1, mask2)
-                
+                                    mask1, mask2, self.cls_center, self.patch_center)
+
                 loss.mean().backward()
                 self.optimizer.step()
                 self.ema_update()
-
+            
             print(f'Epoch {self.n_epochs+1} loss: {loss.mean().item()}')
             self.n_epochs += 1
 
@@ -154,7 +158,7 @@ class TBot(nn.Module):
     
     def encode(self, x):
         x = torch.from_numpy(x).to(torch.float).to(self.device)
-        x_cls, x_patch = self.student(x)
+        x_cls, x_patch = self.teacher(x)
         return x_cls.to('cpu').detach().numpy()
     
     def save(self, path):
