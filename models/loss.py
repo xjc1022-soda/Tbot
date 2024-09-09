@@ -14,6 +14,8 @@ class TBotLoss(nn.Module):
     def cross_entropy(self, student, teacher):
         student = student / self.student_temp
         teacher = teacher / self.teacher_temp
+        # print(teacher < 0)
+        # print((F.log_softmax(student, dim=1) > 0).sum())
         return torch.sum(-teacher * F.log_softmax(student, dim=1), dim=-1)
 
     def forward(self, student_out1, teacher_out1, 
@@ -29,6 +31,7 @@ class TBotLoss(nn.Module):
 
         # contrastive loss for student1_cls and teacher2_cls
         loss_cls_1 = self.cross_entropy(student2_cls, teacher1_cls)
+        # print(f'cross entropy is {loss_cls_1}')
         # contrastive loss for student2_cls and teacher1_cls
         loss_cls_2 = self.cross_entropy(student1_cls, teacher2_cls)
         loss_cls = (loss_cls_1 + loss_cls_2) / 2

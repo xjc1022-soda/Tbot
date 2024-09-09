@@ -1,128 +1,128 @@
-python -u main.py Chinatown UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py SonyAIBORobotSurface1 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py ItalyPowerDemand UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py MoteSmain UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py SonyAIBORobotSurface2 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py TwoLeadECG UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py SmoothSubspace UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py ECGFiveDays UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Fungi UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py CBF UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py BME UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py UMD UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py DiatomSizeReduction UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py DodgerLoopWeekend UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py DodgerLoopGame UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py GunPoint UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Coffee UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py FaceFour UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py FreezerSmallmain UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py ArrowHead UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py ECG200 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Symbols UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py ShapeletSim UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py InsectEPGSmallmain UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py BeetleFly UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py BirdChicken UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py ToeSegmentation1 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py ToeSegmentation2 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Wine UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Beef UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Plane UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py OliveOil UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py SyntheticControl UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py PickupGestureWiimoteZ UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py ShakeGestureWiimoteZ UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py GunPointMaleVersusFemale UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py GunPointAgeSpan UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py GunPointOldVersusYoung UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Lightning7 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py DodgerLoopDay UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py PowerCons UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py FacesUCR UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Meat UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Trace UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py MelbournePedestrian UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py MiddlePhalanxTW UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py DistalPhalanxOutlineAgeGroup UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py MiddlePhalanxOutlineAgeGroup UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py ProximalPhalanxTW UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py ProximalPhalanxOutlineAgeGroup UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py DistalPhalanxTW UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Herring UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Car UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py InsectEPGRegularmain UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py MedicalImages UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Lightning2 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py FreezerRegularmain UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Ham UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py MiddlePhalanxOutlineCorrect UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py DistalPhalanxOutlineCorrect UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py ProximalPhalanxOutlineCorrect UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Mallat UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py InsectWingbeatSound UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Rock UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py GesturePebbleZ1 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py SwedishLeaf UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py CinCECGTorso UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py GesturePebbleZ2 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Adiac UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py ECG5000 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py WordSynonyms UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py FaceAll UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py GestureMidAirD2 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py GestureMidAirD3 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py GestureMidAirD1 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py ChlorineConcentration UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py HouseTwenty UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Fish UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py OSULeaf UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py MixedShapesSmallmain UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py CricketZ UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py CricketX UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py CricketY UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py FiftyWords UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Yoga UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py TwoPatterns UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py PhalangesOutlinesCorrect UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Strawberry UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py ACSF1 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py AllGestureWiimoteY UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py AllGestureWiimoteX UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py AllGestureWiimoteZ UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Wafer UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py WormsTwoClass UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Worms UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Earthquakes UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Haptics UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Computers UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py InlineSkate UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py PigArtPressure UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py PigCVP UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py PigAirwayPressure UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Phoneme UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py ScreenType UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py LargeKitchenAppliances UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py SmallKitchenAppliances UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py RefrigerationDevices UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py UWaveGestureLibraryZ UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py UWaveGestureLibraryY UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py UWaveGestureLibraryX UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py ShapesAll UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py Crop UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py SemgHandGenderCh2 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py EOGVerticalSignal UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py EOGHorizontalSignal UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py MixedShapesRegularmain UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py SemgHandMovementCh2 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py SemgHandSubjectCh2 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py PLAID UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py UWaveGestureLibraryAll UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py ElectricDevices UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py EthanolLevel UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py StarLightCurves UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py NonInvasiveFetalECGThorax1 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py NonInvasiveFetalECGThorax2 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py FordA UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py FordB UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
-python -u main.py HandOutlines UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Chinatown UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py SonyAIBORobotSurface1 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py ItalyPowerDemand UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py MoteSmain UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py SonyAIBORobotSurface2 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py TwoLeadECG UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py SmoothSubspace UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py ECGFiveDays UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Fungi UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py CBF UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py BME UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py UMD UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py DiatomSizeReduction UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py DodgerLoopWeekend UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py DodgerLoopGame UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py GunPoint UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Coffee UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py FaceFour UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py FreezerSmallmain UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py ArrowHead UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py ECG200 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Symbols UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py ShapeletSim UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py InsectEPGSmallmain UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py BeetleFly UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py BirdChicken UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py ToeSegmentation1 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py ToeSegmentation2 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Wine UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Beef UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Plane UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py OliveOil UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py SyntheticControl UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py PickupGestureWiimoteZ UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py ShakeGestureWiimoteZ UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py GunPointMaleVersusFemale UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py GunPointAgeSpan UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py GunPointOldVersusYoung UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Lightning7 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py DodgerLoopDay UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py PowerCons UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py FacesUCR UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Meat UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Trace UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py MelbournePedestrian UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py MiddlePhalanxTW UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py DistalPhalanxOutlineAgeGroup UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py MiddlePhalanxOutlineAgeGroup UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py ProximalPhalanxTW UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py ProximalPhalanxOutlineAgeGroup UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py DistalPhalanxTW UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Herring UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 Python -u main.py Car UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py InsectEPGRegularmain UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py MedicalImages UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Lightning2 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py FreezerRegularmain UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Ham UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py MiddlePhalanxOutlineCorrect UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py DistalPhalanxOutlineCorrect UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py ProximalPhalanxOutlineCorrect UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Mallat UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py InsectWingbeatSound UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Rock UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py GesturePebbleZ1 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py SwedishLeaf UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py CinCECGTorso UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py GesturePebbleZ2 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Adiac UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py ECG5000 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py WordSynonyms UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py FaceAll UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py GestureMidAirD2 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py GestureMidAirD3 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py GestureMidAirD1 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py ChlorineConcentration UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py HouseTwenty UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Fish UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py OSULeaf UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py MixedShapesSmallmain UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py CricketZ UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py CricketX UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py CricketY UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py FiftyWords UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Yoga UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py TwoPatterns UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py PhalangesOutlinesCorrect UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Strawberry UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py ACSF1 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py AllGestureWiimoteY UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py AllGestureWiimoteX UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py AllGestureWiimoteZ UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Wafer UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py WormsTwoClass UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Worms UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Earthquakes UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Haptics UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Computers UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py InlineSkate UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py PigArtPressure UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py PigCVP UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py PigAirwayPressure UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Phoneme UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py ScreenType UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py LargeKitchenAppliances UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py SmallKitchenAppliances UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py RefrigerationDevices UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py UWaveGestureLibraryZ UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py UWaveGestureLibraryY UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py UWaveGestureLibraryX UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py ShapesAll UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py Crop UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py SemgHandGenderCh2 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py EOGVerticalSignal UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py EOGHorizontalSignal UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py MixedShapesRegularmain UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py SemgHandMovementCh2 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py SemgHandSubjectCh2 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py PLAID UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py UWaveGestureLibraryAll UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py ElectricDevices UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py EthanolLevel UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py StarLightCurves UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py NonInvasiveFetalECGThorax1 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py NonInvasiveFetalECGThorax2 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py FordA UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py FordB UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=7 python -u main.py HandOutlines UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval

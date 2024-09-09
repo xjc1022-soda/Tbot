@@ -37,7 +37,7 @@ if __name__ == '__main__':
     device = init_dl_program(args.gpu, seed=args.seed, max_threads=args.max_threads)
     print(device)
     
-    print('Loading data... ', end='')
+    print('Loading data...', end='')
     if args.loader == 'UCR':
         task_type = 'classification'
         train_data, train_labels, test_data, test_labels = datautils.load_UCR(args.dataset)
@@ -48,7 +48,7 @@ if __name__ == '__main__':
         
     elif args.loader == 'forecast_csv':
         task_type = 'forecasting'
-        data, train_slice, valid_slice, test_slice, scaler, pred_lens, n_covariate_cols = datautils.load_forecast_csv(args.dataset)
+        data, train_slice, valid_slice, test_slice, scaler, pred_lens, n_covariate_cols = datautils.load_forecllast_csv(args.dataset)
         train_data = data[:, train_slice]
         
     elif args.loader == 'forecast_csv_univar':
@@ -77,8 +77,8 @@ if __name__ == '__main__':
         train_data, _, _, _ = datautils.load_UCR('FordA')
         
     else:
-        raise ValueError(f"Unknown loader {args.loader}.")
-        
+        raise ValueError(f'Unknown loader: {args.loader}')
+           
     print('done')
     
     config = dict(

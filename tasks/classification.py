@@ -3,11 +3,15 @@ from . import _eval_protocols as eval_protocols
 from sklearn.preprocessing import label_binarize
 from sklearn.metrics import average_precision_score
 from sklearn.metrics import roc_auc_score, f1_score
+import torch
 
 def eval_classification(model, train_data, train_labels, test_data, test_labels, eval_protocol='svm'):
     assert train_labels.ndim == 1 or train_labels.ndim == 2
+    # print(train_data.ndim)
     train_repr = model.encode(train_data)
-    test_repr = model.encode(test_data)
+    # print(train_repr[0,:20])
+    test_repr = model.encode(test_data) 
+    # assert 0
 
     if eval_protocol == 'linear':
         fit_clf = eval_protocols.fit_lr

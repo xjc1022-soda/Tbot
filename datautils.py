@@ -131,11 +131,12 @@ def _get_time_features(dt):
         dt.dayofyear.to_numpy(),
         dt.month.to_numpy(),
         dt.weekofyear.to_numpy(),
-    ], axis=1).astype(np.float)
+    ], axis=1).astype(np.float64)
 
 
 def load_forecast_csv(name, univar=False):
-    data = pd.read_csv(f'datasets/{name}.csv', index_col='date', parse_dates=True)
+    data = pd.read_csv(f'datasets/{name}.csv', index_col=0, parse_dates=True)
+    print(data.head(10))
     dt_embed = _get_time_features(data.index)
     n_covariate_cols = dt_embed.shape[-1]
     

@@ -85,8 +85,8 @@ class TBot(nn.Module):
                     param.requires_grad = False
                 self.optimizer.zero_grad()
                 
-                # copy the student weights to the teacher
-                self.teacher.load_state_dict(self.student.state_dict())
+                # copy the student weights to the teacher 
+                # self.teacher.load_state_dict(self.student.state_dict())
 
                 x = batch.to(self.device)
 
