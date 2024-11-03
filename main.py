@@ -6,8 +6,8 @@ import time
 import datetime
 
 import tasks
-from tbot import TBot
-from utils import init_dl_program, pkl_save, name_with_datetime
+from tranBot import TranBot
+from utils import init_dl_program, pkl_save, name_with_datetime, cal_patch_num
 import datautils
 
 if __name__ == '__main__':
@@ -18,9 +18,17 @@ if __name__ == '__main__':
     parser.add_argument('--gpu', type=int, default=0, help='The gpu no. used for training and inference (defaults to 0)')
     parser.add_argument('--batch-size', type=int, default=8, help='The batch size (defaults to 8)')
     parser.add_argument('--lr', type=float, default=0.001, help='The learning rate (defaults to 0.001)')
-    parser.add_argument('--repr-dims', type=int, default=320, help='The representation dimension (defaults to 320)')
-    parser.add_argument('--t-temp', type=float, default=5, help='The teacher temperature (defaults to 5)')
-    parser.add_argument('--s-temp', type=float, default=2, help='The student temperature (defaults to 2)')
+    parser.add_argument('--d_model', type=int, default=64, help='The representation dimension (defaults to 320)')
+    parser.add_argument('--n_heads', type=int, default=4, help='The number of heads in the multihead attention (defaults to 4)')
+    parser.add_argument('--n_layers', type=int, default=2, help='The number of layers in the transformer encoder (defaults to 2)')
+    parser.add_argument('--n_hierarchy', type=int, default=3, help='The number of hierarchies in the transformer encoder (defaults to 3)')
+    parser.add_argument('--d_ff', type=int, default=64, help='The difference dimension (defaults to 64)')
+    parser.add_argument('--patch_size', type=int, default=24, help='The patch size (defaults to 24)')
+    parser.add_argument('--stride', type=int, default=24, help='The stride (defaults to 24)')
+    parser.add_argument('--d_k', type=int, default=64, help='The key dimension (defaults to 64)')
+    parser.add_argument('--d_v', type=int, default=64, help='The value dimension (defaults to 64)')
+    parser.add_argument('--mask_ratio', type=float, default=0.2, help='The mask ratio (defaults to 0.2)')
+
 
     parser.add_argument('--epochs', type=int, help='The number of epochs')
     parser.add_argument('--iters', type=int, help='The number of iterations')
@@ -48,7 +56,8 @@ if __name__ == '__main__':
         
     elif args.loader == 'forecast_csv':
         task_type = 'forecasting'
-        data, train_slice, valid_slice, test_slice, scaler, pred_lens, n_covariate_cols = datautils.load_forecllast_csv(args.dataset)
+        data, train_slice, valid_slice, test_slice, scaler, pred_lens, n_covariate_cols = datautils.load_forecast_csv(args.dataset)
+        print(data.shape)
         train_data = data[:, train_slice]
         
     elif args.loader == 'forecast_csv_univar':
@@ -82,11 +91,17 @@ if __name__ == '__main__':
     print('done')
     
     config = dict(
-        batch_size=args.batch_size,
         lr=args.lr,
-        output_dims=args.repr_dims,
-        teacher_temp=args.t_temp,
-        student_temp=args.s_temp,
+        mask_ratio=args.mask_ratio,
+        d_model=args.d_model,
+        n_heads=args.n_heads,
+        n_layers=args.n_layers,
+        n_hierarchy=args.n_hierarchy,
+        d_ff=args.d_ff,
+        patch_size=args.patch_size,
+        stride=args.stride,
+        d_k=args.d_k,
+        d_v=args.d_v
     )
     
     def save_checkpoint_callback(
@@ -108,11 +123,15 @@ if __name__ == '__main__':
     # create a directory to save the model and output
     run_dir = 'training/' + args.dataset + '__' + name_with_datetime(args.run_name)
     os.makedirs(run_dir, exist_ok=True)
-    
+    n_patch, padding = cal_patch_num(train_data.shape[1], args.patch_size, args.stride)
+    # print(n_patch)
     t = time.time()
-    
-    model = TBot(
-        input_dims=train_data.shape[-1],
+    batch_size = min(args.batch_size, train_data.shape[0])
+    model = TranBot(
+        ts_dim=train_data.shape[-1],
+        n_patch=n_patch,
+        padding=padding,
+        batch_size=batch_size,
         device=device,
         **config
     )
@@ -133,7 +152,7 @@ if __name__ == '__main__':
         if task_type == 'classification':
             out, eval_res = tasks.eval_classification(model, train_data, train_labels, test_data, test_labels, eval_protocol='svm')
         elif task_type == 'forecasting':
-            out, eval_res = tasks.eval_forecasting(model, data, train_slice, valid_slice, test_slice, scaler, pred_lens, n_covariate_cols)
+            out, eval_res = tasks.eval_forecasting(model, data, train_slice, valid_slice, test_slice, scaler, pred_lens, n_covariate_cols, univar=False)
         elif task_type == 'anomaly_detection':
             out, eval_res = tasks.eval_anomaly_detection(model, all_train_data, all_train_labels, all_train_timestamps, all_test_data, all_test_labels, all_test_timestamps, delay)
         elif task_type == 'anomaly_detection_coldstart':

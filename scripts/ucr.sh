@@ -1,4 +1,4 @@
-CUDA_VISIBLE_DEVICES=7 python -u main.py Chinatown UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
+CUDA_VISIBLE_DEVICES=6 python -u main.py Chinatown test --loader UCR --batch-size 8 --d_model 8 --max-threads 8 --seed 42 --eval
 CUDA_VISIBLE_DEVICES=7 python -u main.py SonyAIBORobotSurface1 UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
 CUDA_VISIBLE_DEVICES=7 python -u main.py ItalyPowerDemand UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval
 CUDA_VISIBLE_DEVICES=7 python -u main.py MoteSmain UCR --loader UCR --batch-size 8 --repr-dims 320 --max-threads 8 --seed 42 --eval

@@ -143,13 +143,16 @@ class TBot(nn.Module):
                 assert student_out1[1].size() == teacher_out1[1].size() == student_out2[1].size() == teacher_out2[1].size()
                 assert mask1.size() == mask2.size()
 
-                loss, self.cls_center, self.patch_center = self.tbotloss(student_out1, teacher_out1, 
+                loss_cls, loss_patch, self.cls_center, self.patch_center = self.tbotloss(student_out1, teacher_out1, 
                                     student_out2, teacher_out2,
                                     mask1, mask2, self.cls_center, self.patch_center)
-
+                
+                loss = loss_cls 
                 loss.mean().backward()
                 self.optimizer.step()
                 self.ema_update()
+                # import ipdb
+                # ipdb.set_trace()
             
             print(f'Epoch {self.n_epochs+1} loss: {loss.mean().item()}')
             self.n_epochs += 1

@@ -1,6 +1,8 @@
 # multivar
 python -u train.py electricity forecast_multivar --loader forecast_csv --repr-dims 320 --max-threads 8 --seed 42 --eval
 
+python -u main.py ETTh1 test --loader forecast_csv --d_model 64 --max-threads 8 --seed 42 --eval
+
 # multivar testing result in 1/7/2024
 """
 Evaluation result: {3548974990844727}}

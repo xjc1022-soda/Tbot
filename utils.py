@@ -1,7 +1,8 @@
-import os
-import numpy as np
-import pickle
 import torch
+import numpy as np
+import torch.nn.functional as F
+import os
+import pickle
 import random
 from datetime import datetime
 
@@ -126,3 +127,42 @@ def init_dl_program(
         
     return devices if len(devices) > 1 else devices[0]
 
+def visible_mask_div(x, mask_ratio):
+    n_mask = int(x.size(1) * mask_ratio)
+    total_idx = torch.arange(x.size(1))
+    
+    # Generate a random permutation of indices and select the first n_mask indices
+    perm = torch.randperm(x.size(1))
+    mask_idx = perm[:n_mask]
+    
+    # Create a boolean mask
+    bool_mask = torch.zeros(x.size(1), dtype=torch.bool)
+    bool_mask[mask_idx] = True
+    
+    # Let visible_idx be the complement of mask_idx
+    visible_idx = total_idx[~bool_mask]
+    
+    visible_ts = x[:, visible_idx, :]
+    mask_ts = x[:, mask_idx, :]
+    return visible_ts, mask_ts
+
+
+def patch_div(x, patch_size, stride):
+    if (x.size(1) - patch_size) % stride != 0:
+        pad = stride - (x.size(1) - patch_size) % stride
+    else:
+        pad = 0
+    print(f'pad is {pad}')
+    p2d = (0, 0, 0, pad)
+    x = F.pad(x, p2d)
+    print(x)
+    x = x.unfold(1, patch_size, stride)
+    print(x)
+    return x
+
+def cal_patch_num(len, patch_size, stride):
+    if (len - patch_size) % stride != 0:
+        pad = stride - (len - patch_size) % stride
+    else:
+        pad = 0
+    return (len + pad - patch_size) // stride + 1 , pad

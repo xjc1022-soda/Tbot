@@ -135,7 +135,7 @@ def _get_time_features(dt):
 
 
 def load_forecast_csv(name, univar=False):
-    data = pd.read_csv(f'datasets/{name}.csv', index_col=0, parse_dates=True)
+    data = pd.read_csv(f'datasets/{name}.csv', index_col='date', parse_dates=True)
     print(data.head(10))
     dt_embed = _get_time_features(data.index)
     n_covariate_cols = dt_embed.shape[-1]
@@ -149,6 +149,7 @@ def load_forecast_csv(name, univar=False):
             data = data.iloc[:, -1:]
         
     data = data.to_numpy()
+    print('data',data.shape)
     if name == 'ETTh1' or name == 'ETTh2':
         train_slice = slice(None, 12*30*24)
         valid_slice = slice(12*30*24, 16*30*24)
@@ -164,6 +165,7 @@ def load_forecast_csv(name, univar=False):
     
     scaler = StandardScaler().fit(data[train_slice])
     data = scaler.transform(data)
+    # print(data.shape)
     if name in ('electricity'):
         data = np.expand_dims(data.T, -1)  # Each variable is an instance rather than a feature
     else:
@@ -173,11 +175,12 @@ def load_forecast_csv(name, univar=False):
         dt_scaler = StandardScaler().fit(dt_embed[train_slice])
         dt_embed = np.expand_dims(dt_scaler.transform(dt_embed), 0)
         data = np.concatenate([np.repeat(dt_embed, data.shape[0], axis=0), data], axis=-1)
-    
+    # print(data.shape)
     if name in ('ETTh1', 'ETTh2', 'electricity'):
         pred_lens = [24, 48, 168, 336, 720]
     else:
         pred_lens = [24, 48, 96, 288, 672]
+
         
     return data, train_slice, valid_slice, test_slice, scaler, pred_lens, n_covariate_cols
 

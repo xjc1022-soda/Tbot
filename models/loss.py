@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import numpy as np  
 
 class TBotLoss(nn.Module):
     def __init__(self, student_temp=2, teacher_temp=5):
@@ -9,7 +10,7 @@ class TBotLoss(nn.Module):
         self.teacher_temp = teacher_temp
 
 
- 
+    #  center is not used in the cross_entropy function
     def cross_entropy(self, student, teacher, center=None):
         teacher = teacher.detach()
         student = F.log_softmax(student / self.student_temp, dim=1)
@@ -64,11 +65,30 @@ class TBotLoss(nn.Module):
 
             loss_patch_2 = self.cross_entropy(student2_patch, teacher2_patch, patch_center)
             loss_patch_2 = torch.sum(loss_patch_2 * student_mask2, dim=1)
-            loss_patch_1 = loss_patch_1 / torch.sum(student_mask2, dim=1)
+            loss_patch_2 = loss_patch_2 / torch.sum(student_mask2, dim=1)
+
+            print(loss_patch_1, loss_patch_2)
 
             loss_patch = (loss_patch_1 + loss_patch_2) / 2
-
+        
+        # whether it is fair to average the loss by 2
         cls_center = cls_center * 0.9 + torch.cat([teacher1_cls, teacher2_cls], dim=0).mean(dim=0) * 0.1
         patch_center = patch_center * 0.9 + torch.cat([teacher1_patch, teacher2_patch], dim=0).mean(dim=1).mean(dim=0) * 0.1
 
-        return loss_cls + loss_patch, cls_center, patch_center
+        return loss_cls , loss_patch, cls_center, patch_center
+    
+
+def DistillationLoss(student_out, teacher_out):
+    mse = nn.MSELoss()
+    loss = 0 
+    for i in range(len(student_out)):
+        loss += mse(student_out[i], teacher_out[i])
+    return loss
+
+def ReconstructionLoss(mask_patch, pred_list, merger):
+    mse = nn.MSELoss()
+    loss = 0 
+    for pred in pred_list:
+        loss += mse(mask_patch, pred)
+        mask_patch = merger(mask_patch)
+    return loss
